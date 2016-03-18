@@ -1,0 +1,175 @@
+body{ 
+	padding:20px;
+	width: 770px;
+}
+
+#addActivityBtn{
+	width:180px; 
+	height:20px; 
+	margin-bottom:20px;
+}
+
+#addDayBtn{
+	width:100px; 
+	height:38px;
+	padding-top:22px;
+	margin: 300px 0 0 20px;
+}
+
+
+
+
+.oneDayContainer{
+	width:300px; 
+	float:left;
+}
+
+div.listContainer{
+	width:240px; 
+	margin:0 auto; 
+	border:dashed 2px #CCC; 
+	padding:10px;
+}
+
+div.activityList{
+	height:600px;
+}
+
+div.dayList{
+	height:530px;
+}
+
+.listContainer ul{
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+	width: 240px; 
+	height:inherit;
+}
+
+div.listLabel{ 
+	float:left; 
+	margin:5px 0 0 0;
+}
+.listContent{ 
+	float:left; 
+	margin:4px 0 0 5px; 
+}
+
+.listElement{ 
+	padding:2px 0 5px 5px; 
+	margin: 0 0 3px 0;
+	height:24px; 
+	font-size: 1.0em;
+}
+
+.listElement:hover{
+	cursor:move;
+}
+
+div.hover{
+	border:dashed 2px #0F0; 
+}
+		
+		
+
+.editActivityBtn{
+	float:right; 
+	margin-right:5px;
+}
+		
+		
+		
+
+
+#modal{
+	width:256px; 
+	margin-left:-125px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dayInfoContainer{
+	width:250px; 
+	height:100px; 
+	margin:0 auto; 
+	padding-left:10px; 
+	margin-bottom:20px;
+}
+
+.dayInfo{
+	float:left;
+	padding:7px 0 0 0;
+}
+
+.chartContainer {
+	padding: 25px 0 0 0;
+	width: 70px; 
+	height: 75px; 
+	float:right;
+}
+
+div.chart {
+	margin-left: -15px;
+	height: 50px;
+	width: 100px;
+	behavior: url(-ms-transform.htc);
+	/* Firefox */
+	-moz-transform: rotate(90deg);
+	/* Safari and Chrome */
+	-webkit-transform: rotate(90deg);
+	/* Opera */
+	-o-transform: rotate(90deg);
+	/* IE9 */
+	-ms-transform: rotate(90deg);
+}
+
+div.chartRedLine {
+	margin-top: -27px;
+	height: 2px;
+	width: 70px;
+	position: absolute;
+}
+
+.startTimeLabel{
+	float:left;
+	padding:5px 5px 0 0;
+}
+
+.paddingRight5{
+	padding:0 5px 0 0;
+}
+
+.startTime{
+	width:40px;
+	text-align:center;
+}
+
+.marginDown10{
+	margin:0 0 10px 0;
+}
+
+
+.chart0{
+	width:0%;
+}
+.chart1{
+	width:0%;
+}
+.chart2{
+	width:0%;
+}
+.chart3{
+	width:0%;
+}

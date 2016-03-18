@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>PS4</title>	
+    <!-- external JS libraries -->
+    
+	<script src="libs/jqueryui/js/jquery-1.9.1.js"></script>
+    <script src="libs/jqueryui/js/jquery-ui-1.10.1.custom.js"></script>
+    <script src="libs/jqueryui/js/jquery-ui-timepicker-addon.js"></script>
+    <script src="libs/jqueryui/js/jquery.mousewheel.js"></script>
+
+	<script src="libs/bootstrap/js/bootstrap.js"></script>
+    
+	<!-- external CSS libraries -->
+	<link rel="stylesheet" href="libs/jqueryui/css/start/jquery-ui-1.10.1.custom.css">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
+	
+
+    <!-- internal JS & CSS libraries -->
+    <link rel="stylesheet" href="libs/style.css">
+    
+    <!-- The models -->
+    <script src="model/ActivityModel.js"></script>
+    <script src="model/DayModel.js"></script>
+    <script src="model/MainModel.js"></script>
+    
+    <!-- The views -->
+    <script src="view/ModalView.js"></script>
+    <script src="view/DayView.js"></script>
+    <script src="view/ActivityView.js"></script>
+    <script src="view/ListView.js"></script>
+    
+    <!-- The controllers -->
+    <script src="controller/ModalController.js"></script>
+    <script src="controller/DayController.js"></script>
+    <script src="controller/ActivityController.js"></script>
+	<script src="controller/ListController.js"></script>
+    
+    <!-- The GeneralController followed by initialization and test data -->
+    <script src="GeneralController.js"></script>
+	<script>
+        //The global variable so we can accesse it from objects
+        var GC;
+    
+        $(document).ready(function(e) {
+            var model = new Model();
+            GC = new GeneralController(model);
+            createTestData(model);
+        });
+        
+		//bind the mouse wheel with the x-axis
+		$(function() {
+			$("body").mousewheel(function(event, delta) {
+				this.scrollLeft -= (delta * 30);
+				event.preventDefault();
+			});
+		});
+	
+	
+	
+	
+	
+		//Test data...
+        function createTestData(model){
+            model.addDay();
+            
+            model.addActivity(new Activity("Introduction",10,0,""),0);
+            model.addActivity(new Activity("Idea 1",30,0,""),0);
+            model.addActivity(new Activity("Working in groups",35,1,""),0);
+            model.addActivity(new Activity("Idea 1 discussion",15,2,""),0);
+            model.addActivity(new Activity("Coffee break",20,3,""),0);
+            
+            console.log("Day Start: " + model.days[0].getStart());
+            console.log("Day End: " + model.days[0].getEnd());
+            console.log("Day Length: " + model.days[0].getTotalLength() + " min");
+            
+            $.each(ActivityType,function(index,type){
+                console.log("Day '" + ActivityType[index] + "' Length: " +  model.days[0].getLengthByType(index) + " min");
+            });
+        }
+
+	</script>
+        
+</head>
+<body>
+
+<!-- Activity list container, it is actually a list view appended with a button-->
+<div class="oneDayContainer" id="activity">
+    <center>
+        <a id="addActivityBtn" class="btn btn-success"><i class="icon-plus"></i> Add activity</a>
+    </center>
+    
+    <div class="well listContainer activityList">
+        <ul></ul>
+    </div>
+</div>
+
+
+<!-- ONE EMPTY DAY ---This is how a day looks like when it is added-----------------
+<div class="oneDayContainer">
+    <div class="dayInfoContainer">
+    	
+        <div class="dayInfo">
+            <div><span class="startTimeLabel">Starting time:</span><input class="startTime" value="08:00" type="text" maxlength="5" ></input></div>
+            <div class="marginDown10"><span class="paddingRight5">End time:</span><span class="endTime">08:00</span></div>
+            <div>
+                <span class="paddingRight5">Total length:</span> 
+                <span class="totalLength">0</span>
+                <span> min</span>
+            </div>
+        </div>
+        
+        <div class="chartContainer">
+            <div class="progress chart">
+                <div class="bar bar-info" style="width: 0%;"></div>
+                <div class="bar bar-success" style="width: 0%;"></div>
+                <div class="bar bar-danger" style="width: 0%;"></div>
+                <div class="bar bar-warning" style="width: 0%;"></div>
+            </div>
+        
+            <div class="progress progress-striped active chartRedLine">
+                <div class="bar bar-danger" style="width: 100%;"></div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="well listContainer dayList"><ul></ul></div>
+</div>
+----------------------------------------------------------------------------------->
+
+
+
+<!-- Add new day button -->
+<a id="addDayBtn" role="button" class="btn btn-success"><i class="icon-plus"></i> Add day</a>
+
+
+<!-- Modal view -->
+<div id="modal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+    	<h3 id="myModalLabel">Add a new activity</h3>
+    </div>
+    
+    <div class="modal-body">
+        <input id="modalName" type="text" placeholder="Name">
+        
+        <div class="input-prepend input-append">
+            <input class="span1" id="modalLength" placeholder="Length" type="text" maxlength="3">
+            <span class="add-on">min</span>
+        </div>
+        
+        <select id="modalType">
+            <option>TypeNameHere</option>
+        </select>
+        
+        <textarea id="modalDescr" rows="4" placeholder="Description"></textarea>
+    </div>
+    
+    <div class="modal-footer">
+        <button class="btn btn-danger" id="cancelModalBtn">Cancel</button>
+        <button class="btn btn-success" id="saveModalBtn">Save</button>
+    </div>
+</div>
+
+</body>
+</html>
